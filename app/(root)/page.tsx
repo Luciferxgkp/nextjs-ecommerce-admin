@@ -1,10 +1,17 @@
+"use client";
+import { Modal } from "@/components/modals/modal";
+import { useStoreModal } from "@/hooks/use-store-modal";
 import { UserButton } from "@clerk/nextjs";
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <div>
-      This is a Home Page
-      <UserButton afterSignOutUrl="/" />
-    </div>
-  );
+  const isOpen = useStoreModal((state) => state.isOpen);
+  const onOpen = useStoreModal((state) => state.onOpen);
+
+  useEffect(() => {
+    if (!isOpen) {
+      onOpen();
+    }
+  }, [isOpen, onOpen]);
+  return <div></div>;
 }
