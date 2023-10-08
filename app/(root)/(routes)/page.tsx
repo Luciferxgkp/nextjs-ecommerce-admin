@@ -13,5 +13,5 @@ export default function Home() {
       onOpen();
     }
   }, [isOpen, onOpen]);
-  return <div></div>;
+  return null;
 }
